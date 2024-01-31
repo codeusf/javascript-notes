@@ -3,130 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS DOM Get & Set Value Methods</title>
+    <title>JS DOM querySelectors</title>
     <style>
       * {
         font-family: Arial, Helvetica, sans-serif;
-      }
-
-      body {
-        font: 18px/24px arial;
-      }
-      #wrapper {
-        border: 1px solid black;
-        width: 1000px;
-        background: white;
-        margin: 0 auto;
-      }
-
-      #top-bar {
-        background: MEDIUMPURPLE;
-      }
-      #top-bar ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      #top-bar ul li {
-        display: inline-block;
-        margin: 5px;
-      }
-      #top-bar a {
-        color: #fff;
-        font-size: 20px;
-      }
-      #top-bar a:hover {
-        color: crimson;
-      }
-      #header {
-        min-height: 100px;
-        font-family: arial;
-        border-bottom: 1px solid black;
-      }
-
-      #header h1 {
-        padding: 30px 0 0 20px;
-        margin: 0;
-      }
-      #menu {
-        border-bottom: 1px solid black;
-      }
-      #menu ul {
-        margin: 0;
-        padding: 0;
-      }
-      #menu li {
-        display: inline-block;
-      }
-      #menu li a {
-        display: block;
-        padding: 10px 13px;
-        text-decoration: none;
-      }
-      #menu li a:hover {
-      }
-      #content {
-        width: 795px;
-        min-height: 500px;
-        padding: 15px;
-        float: left;
-        box-sizing: border-box;
-        position: relative;
-      }
-      #content h2 {
-        font-family: arial;
-      }
-      .content-image {
-        float: left;
-        margin: 0 15px 10px 0;
-      }
-      #sidebar {
-        width: 200px;
-        min-height: 500px;
-        float: right;
-        border-left: 1px solid black;
-      }
-      #sidebar a {
-        text-decoration: none;
-        color: black;
-      }
-      #footer {
-        padding: 5px 10px;
-        text-align: right;
-        font-size: 14px;
-        clear: both;
-        border-top: 1px solid black;
-      }
-      @import "mediatest.css" screen and (max-width: 1020px);
-
-      @media screen and (max-width: 810px) {
-        #wrapper {
-          width: 500px;
-        }
-        #content {
-          width: 65%;
-        }
-        #sidebar {
-          width: 34%;
-        }
-      }
-      @media screen and (max-width: 510px) {
-        #wrapper {
-          width: auto;
-        }
-
-        #content {
-          width: 100%;
-          float: none;
-        }
-        #sidebar {
-          width: 100%;
-          float: none;
-        }
-        #header h1 {
-          padding: 30px 0 0 0;
-          text-align: center;
-        }
       }
 
       table {
@@ -378,31 +258,17 @@
   </head>
   <body>
     <hr />
-    <h3>Getting Element's Attribute Value</h3>
+    <h3>JS DOM querySelectors</h3>
 
     <p>
-      The&nbsp;<code>getAttribute()</code>&nbsp;method is used to get the
-      current value of a attribute on the element.
+      The querySelector() method returns the first child element that matches a
+      specified&nbsp;<em>CSS selector(s)</em>&nbsp;of an element.
     </p>
 
     <p>
-      If the specified attribute does not exist on the element, it will
-      return&nbsp;<code>null</code>.<br />
-      &nbsp;
-    </p>
-
-    <hr />
-    <h3>Setting Attributes on Elements</h3>
-
-    <p>
-      The&nbsp;<code>setAttribute()</code>&nbsp;method is used to set an
-      attribute on the specified element.
-    </p>
-
-    <p>
-      If the attribute already exists on the element, the value is updated;
-      otherwise a new attribute is added with the specified name and
-      value.&nbsp;
+      <strong>Note:</strong>&nbsp;The querySelector() method only returns the
+      first element that matches the specified selectors. To return all the
+      matches, use the&nbsp;querySelectorAll()&nbsp;method instead.
     </p>
 
     <h3>html file</h3>
@@ -418,8 +284,9 @@
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
 		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>abc<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span>10px solid yellow<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>abc<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 			   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Yahoo Baba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Yahoo Babaaaaaaaa<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
 			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>menu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
@@ -459,7 +326,10 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 
-    <h3>main.css</h3>
+    <h3>
+      <br />
+      main.css
+    </h3>
 
     <pre
       class="language-css"
@@ -599,46 +469,23 @@
       tabindex="0"
     ><code class="language-javascript"><span class="token keyword">var</span> element<span class="token punctuation">;</span>
 
-<span class="token comment">//element = document.getElementById("header").innerText;</span>
+<span class="token comment">//element = document.querySelector("#header").innerHTML = "&lt;h1&gt;WOW&lt;/h1&gt;";</span>
 
-<span class="token comment">//element = document.getElementById("content").innerText;</span>
+<span class="token comment">//element = document.querySelector("#header").getAttribute ("class");</span>
 
-<span class="token comment">//element = document.getElementById("content").innerHTML;</span>
+<span class="token comment">//element = document.querySelectorAll(".list");</span>
 
-<span class="token comment">//element = document.getElementById("header").innerHTML;</span>
+element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">".list"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
 
-<span class="token comment">//element = document.getElementById("header").getAttribute("class");</span>
+element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"ul"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">//element = document.getElementById("header").getAttribute("style");</span>
+element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"ul"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
 
-<span class="token comment">//element = document.getElementById("header").getAttribute("onClick");</span>
+element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"#header h1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">//element = document.getElementById("header").getAttributeNode("onClick");</span>
-
-<span class="token comment">//element = document.getElementById("header").getAttributeNode("style");</span>
-
-<span class="token comment">//element = document.getElementById("header").getAttributeNode("style").value;</span>
-
-<span class="token comment">//element = document.getElementById("header").attributes;</span>
-
-<span class="token comment">//element = document.getElementById("header").attributes[1];</span>
-
-<span class="token comment">//element = document.getElementById("header").attributes[2].name;</span>
-
-<span class="token comment">/* DOM Set Method */</span>
-
-<span class="token comment">//document.getElementById("header").innerHTML = "&lt;h1&gt;WOW&lt;/h1&gt;";</span>
-
-<span class="token comment">//element = document.getElementById("header").setAttribute("style","border:10px dotted yellow");</span>
-
-<span class="token comment">//element = document.getElementById("header").attributes[1].value = "xyz";</span>
-
-element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"header"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">"style"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"header"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"#header h1"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
     <hr />
     <div id="wrapper">
       <div id="header" class="abc" style="border: 10px solid yellow">
@@ -698,14 +545,4 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </div>
     </div>
   </body>
-  <script>
-    let element;
-    element = document.getElementById("header").innerHTML;
-    console.log(element);
-    element = document.getElementById("header").innerHTML = "<h1>DOM</h1>";
-    element = document.getElementById("footer").innerHTML = "<p>DOM</p>";
-    element = document.getElementById("footer").attributes[1].value =
-      "border: 5px dotted red;";
-    console.log(element);
-  </script>
 </html>
