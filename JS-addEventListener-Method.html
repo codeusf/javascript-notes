@@ -783,4 +783,16 @@ document<span class="token punctuation">.</span><span class="token function">que
       <div id="footer">hamzalodhi2023@gmial.com</div>
     </div>
   </body>
+  <script>
+    let first_var = document.querySelector("#footer");
+    first_var.addEventListener("click", function () {
+      first_var.style.backgroundColor = "red";
+      first_var.style.color = "white";
+    });
+
+    let second_var = document.querySelector("#sidebar");
+    second_var.addEventListener("click", function () {
+      second_var.style.backgroundColor = "red";
+    });
+  </script>
 </html>
