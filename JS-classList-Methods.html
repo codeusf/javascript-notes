@@ -25,6 +25,10 @@
       tr:nth-child(even) {
         background-color: #dddddd;
       }
+      .xyz {
+        background-color: green;
+        color: red;
+      }
 
       code[class*="language-"],
       pre[class*="language-"] {
@@ -688,7 +692,7 @@
         </p>
       </div>
 
-      <div id="sidebar">
+      <div id="sidebar" class="xyz">
         <ul>
           <li><a href="">Home</a></li>
           <li><a href="">About Us</a></li>
@@ -699,4 +703,15 @@
       <div id="footer">yahoobaba@copyright 2018.</div>
     </div>
   </body>
+  <script>
+    let first_var = document.querySelector("#header");
+    first_var.addEventListener("click", function () {
+      first_var.classList.add("xyz");
+    });
+
+    let second_var = document.querySelector("#sidebar");
+    second_var.addEventListener("click", function () {
+      second_var.classList.toggle("xyz");
+    });
+  </script>
 </html>
