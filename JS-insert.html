@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS insert</title>
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      .xyz {
+        background-color: green;
+        color: red;
+      }
+
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: black;
+        background: none;
+        background-color: rgba(0, 0, 0, 0);
+        font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+        font-size: 1em;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+
+      :not(pre) > code[class*="language-"]::after,
+      pre[class*="language-"]::after {
+        right: 0.75em;
+
+        left: auto;
+
+        -webkit-transform: rotate(2deg);
+
+        -moz-transform: rotate(2deg);
+
+        -ms-transform: rotate(2deg);
+
+        -o-transform: rotate(2deg);
+
+        transform: rotate(2deg);
+      }
+      pre[class*="language-"]::before,
+      pre[class*="language-"]::after {
+        content: "";
+
+        z-index: -2;
+
+        display: block;
+
+        position: absolute;
+
+        bottom: 0.75em;
+
+        left: 0.18em;
+
+        width: 40%;
+
+        height: 20%;
+
+        max-height: 13em;
+
+        -webkit-transform: rotate(-2deg);
+
+        -moz-transform: rotate(-2deg);
+
+        -ms-transform: rotate(-2deg);
+
+        -o-transform: rotate(-2deg);
+
+        transform: rotate(-2deg);
+      }
+
+      :not(pre) > code[class*="language-"],
+      pre[class*="language-"] {
+        background-color: #fdfdfd;
+
+        -webkit-box-sizing: border-box;
+
+        -moz-box-sizing: border-box;
+
+        box-sizing: border-box;
+
+        margin-bottom: 1em;
+      }
+      pre[class*="language-"] {
+        position: relative;
+
+        margin: 0.5em 0;
+
+        margin-bottom: 0.5em;
+
+        overflow: visible;
+
+        padding: 0;
+      }
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: black;
+
+        background: none;
+
+        background-color: rgba(0, 0, 0, 0);
+
+        font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+
+        font-size: 1em;
+
+        text-align: left;
+
+        white-space: pre;
+
+        word-spacing: normal;
+
+        word-break: normal;
+
+        word-wrap: normal;
+
+        line-height: 1.5;
+
+        -moz-tab-size: 4;
+
+        -o-tab-size: 4;
+
+        tab-size: 4;
+
+        -webkit-hyphens: none;
+
+        -moz-hyphens: none;
+
+        -ms-hyphens: none;
+
+        hyphens: none;
+      }
+      pre {
+        display: block;
+
+        font-size: 87.5%;
+
+        color: #212529;
+      }
+      pre {
+        margin-top: 0;
+
+        margin-bottom: 1rem;
+
+        overflow: auto;
+
+        -ms-overflow-style: scrollbar;
+      }
+      code,
+      kbd,
+      pre,
+      samp {
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+
+        font-size: 1em;
+      }
+
+      pre[class*="language-"] > code {
+        position: relative;
+        border-left: 10px solid #358ccb;
+        box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+        background-color: #fdfdfd;
+        background-image: linear-gradient(
+          transparent 50%,
+          rgba(69, 142, 209, 0.04) 50%
+        );
+        background-size: 3em 3em;
+        background-origin: content-box;
+        background-attachment: local;
+      }
+
+      code[class*="language"] {
+        max-height: inherit;
+        height: inherit;
+        padding: 0 1em;
+        display: block;
+        overflow: auto;
+      }
+
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: black;
+        background: none;
+        background-color: rgba(0, 0, 0, 0);
+        background-attachment: scroll;
+        background-image: none;
+        background-size: auto;
+        background-origin: padding-box;
+        font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+        font-size: 1em;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+
+      pre code {
+        font-size: inherit;
+        color: inherit;
+        word-break: normal;
+      }
+
+      code {
+        font-size: 87.5%;
+        color: #e83e8c;
+        word-wrap: break-word;
+      }
+      code,
+      kbd,
+      pre,
+      samp {
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 1em;
+      }
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+      @import "color.css";
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font: 18px/24px arial;
+      }
+      #wrapper {
+        border: 1px solid black;
+        width: 1000px;
+        background: white;
+        margin: 0 auto;
+      }
+
+      #top-bar {
+        background: MEDIUMPURPLE;
+      }
+      #top-bar ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      #top-bar ul li {
+        display: inline-block;
+        margin: 5px;
+      }
+      #top-bar a {
+        color: #fff;
+        font-size: 20px;
+      }
+      #top-bar a:hover {
+        color: crimson;
+      }
+      #header {
+        min-height: 100px;
+        font-family: arial;
+        border-bottom: 1px solid black;
+      }
+
+      #header h1 {
+        padding: 30px 0 0 20px;
+        margin: 0;
+      }
+      #menu {
+        border-bottom: 1px solid black;
+      }
+      #menu ul {
+        margin: 0;
+        padding: 0;
+      }
+      #menu li {
+        display: inline-block;
+      }
+      #menu li a {
+        display: block;
+        padding: 10px 13px;
+        text-decoration: none;
+      }
+      #menu li a:hover {
+      }
+      #content {
+        width: 795px;
+        min-height: 500px;
+        padding: 15px;
+        float: left;
+        box-sizing: border-box;
+        position: relative;
+      }
+      #content h2 {
+        font-family: arial;
+      }
+      .content-image {
+        float: left;
+        margin: 0 15px 10px 0;
+      }
+      #sidebar {
+        width: 200px;
+        min-height: 500px;
+        float: right;
+        border-left: 1px solid black;
+      }
+      #sidebar a {
+        text-decoration: none;
+        color: black;
+      }
+      #footer {
+        padding: 5px 10px;
+        text-align: right;
+        font-size: 14px;
+        clear: both;
+        border-top: 1px solid black;
+      }
+      @import "mediatest.css" screen and (max-width: 1020px);
+
+      @media screen and (max-width: 810px) {
+        #wrapper {
+          width: 500px;
+        }
+        #content {
+          width: 65%;
+        }
+        #sidebar {
+          width: 34%;
+        }
+      }
+      @media screen and (max-width: 510px) {
+        #wrapper {
+          width: auto;
+        }
+
+        #content {
+          width: 100%;
+          float: none;
+        }
+        #sidebar {
+          width: 100%;
+          float: none;
+        }
+        #header h1 {
+          padding: 30px 0 0 0;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JS insert</h2>
+    <hr />
+    <h3>insertAdjacentElement()</h3>
+
+    <p>
+      The&nbsp;<code>insertAdjacentElement()</code>&nbsp;method inserts a an
+      element into a specified position.
+    </p>
+
+    <h3>Legal positions:</h3>
+
+    <table class="table table-bordered table-striped">
+      <tbody>
+        <tr>
+          <th>
+            <p>Value</p>
+          </th>
+          <th>
+            <p>Description</p>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <p>afterbegin</p>
+          </td>
+          <td>
+            <p>After the beginning of the element (first child)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>afterend</p>
+          </td>
+          <td>
+            <p>After the element</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>beforebegin</p>
+          </td>
+          <td>
+            <p>Before the element</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>beforeend</p>
+          </td>
+          <td>
+            <p>Before the end of the element (last child)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Syntax</h3>
+
+    <pre
+      class="language-javascript"
+      tabindex="0"
+    ><code class="language-javascript">element<span class="token punctuation">.</span><span class="token function">insertAdjacentElement</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> element<span class="token punctuation">)</span>
+                  or
+node<span class="token punctuation">.</span><span class="token function">insertAdjacentElement</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> element<span class="token punctuation">)</span>
+</code></pre>
+
+    <h3>Parameters</h3>
+
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td>Parameter</td>
+          <td>Description</td>
+        </tr>
+        <tr>
+          <td><em>position</em></td>
+          <td>
+            Required.<br />
+            A position relative to the element:<br />
+            afterbegin<br />
+            afterend<br />
+            beforebegin<br />
+            beforeend
+          </td>
+        </tr>
+        <tr>
+          <td><em>element</em></td>
+          <td>The element to insert.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h3>insertAdjacentHTML()</h3>
+
+    <p>
+      The&nbsp;<code>insertAdjacentHTML()</code>&nbsp;method inserts HTML code
+      into a specified position.
+    </p>
+
+    <h3>Legal positions:</h3>
+
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>afterbegin</td>
+          <td>After the beginning of the element (first child)</td>
+        </tr>
+        <tr>
+          <td>afterend</td>
+          <td>After the element</td>
+        </tr>
+        <tr>
+          <td>beforebegin</td>
+          <td>Before the element</td>
+        </tr>
+        <tr>
+          <td>beforeend</td>
+          <td>Before the end of the element (last child)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Syntax</h3>
+
+    <pre
+      class="language-javascript"
+      tabindex="0"
+    ><code class="language-javascript">element<span class="token punctuation">.</span><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> html<span class="token punctuation">)</span>
+                or
+node<span class="token punctuation">.</span><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> html<span class="token punctuation">)</span></code></pre>
+
+    <h3>Parameters</h3>
+
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr></tr>
+        <tr>
+          <td>Parameter</td>
+          <td>Description</td>
+        </tr>
+        <tr>
+          <td><em>position</em></td>
+          <td>
+            Required.<br />
+            A position relative to the element:<br />
+            afterbegin<br />
+            afterend<br />
+            beforebegin<br />
+            beforeend
+          </td>
+        </tr>
+        <tr>
+          <td><em>html</em></td>
+          <td>The HTML to insert.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>html file</h3>
+    <pre
+      class="language-markup"
+      tabindex="0"
+    ><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>DOM Navigation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+        <span class="token selector">#test</span><span class="token punctuation">{</span>
+            <span class="token property">background</span><span class="token punctuation">:</span> #ffff00<span class="token punctuation">;</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+            <span class="token property">padding</span><span class="token punctuation">:</span> 10px 10px<span class="token punctuation">;</span>
+            <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aperiam eos vel consequatur. Delectus voluptas
+            dolorem id exercitationem, ad ipsam consectetur hic ullam provident! Adipisci exercitationem ipsam rerum sunt
+            doloremque magni soluta, delectus maiores, sapiente quasi labore praesentium accusamus earum cum nam saepe qui?
+            Accusamus provident quo perferendis sint sed.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>js/dom-create.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
+
+    <h3>dom-create.js</h3>
+
+    <pre
+      class="language-javascript"
+      tabindex="0"
+    ><code class="language-javascript"><span class="token comment">//  insertAdjacentElement Method</span>
+
+<span class="token keyword">var</span> newElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"h2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> newText <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"This is just element"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+newElement<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> target <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+target<span class="token punctuation">.</span><span class="token function">insertAdjacentElement</span><span class="token punctuation">(</span><span class="token string">"afterbegin"</span><span class="token punctuation">,</span>newElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">//  insertAdjacentHTML Method</span>
+
+<span class="token keyword">var</span> newElement <span class="token operator">=</span> <span class="token string">"&lt;h2&gt;This is just Html&lt;/h2&gt;"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> target <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+target<span class="token punctuation">.</span><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span><span class="token string">"afterend"</span><span class="token punctuation">,</span>newElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//  insertAdjacentText Method</span>
+
+<span class="token keyword">var</span> newText <span class="token operator">=</span> <span class="token string">"&lt;h2&gt;This is just Text&lt;/h2&gt;"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> target <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+target<span class="token punctuation">.</span><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span><span class="token string">"beforeend"</span><span class="token punctuation">,</span>newText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+    <hr />
+  </body>
+</html>
