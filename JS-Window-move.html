@@ -523,5 +523,21 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
 
     <hr />
+    <button onclick="openWindow()">Open Window</button>
+    <button onclick="moveWindow()">move Window</button>
   </body>
+
+  <script>
+    let myWindow;
+    function openWindow() {
+      myWindow = window.open("", "", "width=500px,height=500px");
+      myWindow.document.write("<p>This is my window</p>");
+    }
+    function moveWindow() {
+      if (myWindow) {
+        myWindow.moveTo(500, 500);
+        myWindow.focus();
+      }
+    }
+  </script>
 </html>
